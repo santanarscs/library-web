@@ -1,0 +1,52 @@
+<app-head-page title="Novo Livro"> </app-head-page>
+<div class="container">
+  <form
+    [formGroup]="form"
+    (submit)="onSubmit()"
+    novalidate
+    class="flex flex-col space-y-4"
+  >
+    <div>
+      <label for="first-name" class="block font-medium text-gray-700">
+        Título do livro
+      </label>
+      <input
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm py-3"
+        type="text"
+        formControlName="title"
+        id="title"
+        autocomplete="off"
+      />
+    </div>
+    <div>
+      <label for="first-name" class="block font-medium text-gray-700">
+        Autor do livro
+      </label>
+      <input
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm py-3"
+        type="text"
+        formControlName="author"
+        id="author"
+        autocomplete="off"
+      />
+    </div>
+    <div>
+      <label for="first-name" class="block font-medium text-gray-700">
+        ISBN
+      </label>
+      <input
+        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm py-3"
+        type="text"
+        formControlName="isbn"
+        id="isbn"
+        autocomplete="off"
+      />
+    </div>
+    <div class="py-3 text-right space-x-2">
+      <a class="btn btn-default text-gray-500" routerLink="/books">Voltar</a>
+      <button class="btn btn-primary" type="submit" type="" submit>
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+<app-head-page title="Lista de Livros">
+  <a routerLink="create" class="btn btn-primary">Novo Livro</a>
+</app-head-page>
+
+<div *ngIf="books$ | async as books" class="container">
+  <table class="custom-table" aria-describedby="list of books">
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Autor</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of books">
+        <td>{{ item.title }}</td>
+        <td>{{ item.author }}</td>
+        <td>{{ item.isbn }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

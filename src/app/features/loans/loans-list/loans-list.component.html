@@ -1,0 +1,55 @@
+<app-head-page title="Lista de Empréstimos">
+  <a routerLink="create" class="btn btn-primary">Novo Empréstimo</a>
+</app-head-page>
+<div *ngIf="loans$ | async as loans" class="container">
+  <ul
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+  >
+    <li *ngFor="let item of loans" class=" ">
+      <div class="h-full flex flex-col">
+        <div
+          class="flex flex-1 flex-col items-center justify-between bg-white p-5 rounded-sm shadow-sm text-center text-gray-700"
+        >
+          <div class="border-b border-gray-200 pb-3">
+            <h2 class="font-bold text-xl">{{ item.book?.title }}</h2>
+            <span class="text-sm text-gray-400">{{ item.book?.isbn }}</span>
+          </div>
+          <div class="p-2">
+            <h2 class="font-bold text-xl">{{ item.customer }}</h2>
+            <span class="text-sm text-gray-400">{{ item.email }}</span>
+          </div>
+          <div>
+            <span
+              *ngIf="!item.returned"
+              class="text-white bg-amber-500 p-1.5 text-xs rounded-sm"
+              >Retirado em:
+              {{ item.loanDate | date: 'mediumDate':'UTC':'pt' }}</span
+            >
+            <span
+              *ngIf="item.returned"
+              class="text-white bg-green-500 p-1.5 text-xs rounded-sm"
+              >Devolvido</span
+            >
+          </div>
+        </div>
+        <div class="flex">
+          <button
+            *ngIf="!item.returned"
+            type="button"
+            (click)="giveBack(item.id)"
+            class="btn btn-secondary w-full text-sm"
+          >
+            Devolver
+          </button>
+          <button
+            *ngIf="item.returned"
+            type="button"
+            class="btn btn-primary w-full text-sm"
+          >
+            Cosultar
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
